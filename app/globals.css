@@ -25,6 +25,15 @@ body {
   color: white;
 }
 
+/* Hide default scrollbars for horizontal scrollers */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 h1, h2, h3 {
   font-family: var(--font-cinzel);
 }

@@ -1,3 +1,5 @@
+import CardScroller from "../components/CardScroller";
+
 export default function Home() {
   return (
     <main className="relative min-h-screen pt-32 bg-black text-white">
@@ -15,8 +17,11 @@ export default function Home() {
           className="mx-auto mb-8 w-80 md:w-96 lg:w-[28rem] 2xl:w-[36rem]"
         />
 
-        <p className="text-white/80 text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-10 max-w-3xl mx-auto">
-          Quellrite is a competitive strategy card game set in a world where aura is power.
+        <p
+          className="text-white/90 text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-10 max-w-3xl mx-auto font-light tracking-wide leading-relaxed"
+          style={{ fontFamily: "var(--font-inter)" }}
+        >
+          A competitive strategy card game set in a world where aura is power
         </p>
 
         <div className="flex justify-center gap-4 flex-wrap mb-6">
@@ -52,14 +57,13 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {/* COLORS */}
       <section className="max-w-none mx-auto px-6 lg:px-12 xl:px-16 pb-32">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--gold)] text-center mb-12">
           The Six Colors
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {[
             ["Azure", "Scry", "See beyond the present and shape the future.", "azure"],
             ["Jade", "Rescue", "Preserve life and recover what was lost.", "jade"],
@@ -70,23 +74,40 @@ export default function Home() {
           ].map(([name, keyword, desc, icon]) => (
             <div
               key={name}
-              className="border border-white/10 p-8 bg-black/40 flex gap-6 items-start"
+              className="border border-white/10 p-6 bg-black/40 flex gap-4 items-start"
             >
               <img
                 src={`/images/colors/${icon}.png`}
                 alt={name}
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
 
               <div>
-                <h3 className="text-lg md:text-xl text-[var(--gold)]">
+                <h3 className="text-lg text-[var(--gold)]">
                   {name} — <span className="text-white/70">{keyword}</span>
                 </h3>
-                <p className="text-sm md:text-base text-white/60 mt-1">{desc}</p>
+                <p className="text-sm text-white/60 mt-1">{desc}</p>
               </div>
             </div>
           ))}
         </div>
+      </section>  
+      {/* CARD SHOWCASE */}
+      <section className="max-w-none px-6 lg:px-12 xl:px-16 py-24">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--gold)] text-center mb-0">
+          Card Showcase
+        </h2>
+
+        <CardScroller
+          images={[
+            "/images/cards/nalani.png",
+            "/images/cards/thera.png",
+            "/images/cards/duke.png",
+            "/images/cards/colossea.png",
+            "/images/cards/akihiko.png",
+            "/images/cards/maynard.png",
+          ]}
+        />
       </section>
       {/* FOOTER */}
       <footer className="bg-black border-t border-white/10 py-6">
