@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+
+
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -29,7 +33,9 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
 }
+

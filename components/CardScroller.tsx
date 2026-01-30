@@ -10,27 +10,36 @@ export default function CardScroller({ images }: { images: string[] }) {
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
+  const isAutoScrolling = useRef(false);
+
   const [step, setStep] = useState(0);
 
-  // clone images for infinite loop
   const looped = useMemo(() => [...images, ...images, ...images], [images]);
 
   // measure one card
   useEffect(() => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    setStep(rect.width + 48); // gap-12
+    setStep(rect.width + 32); // gap-8
   }, []);
 
-  const prev = () => {
+  const scrollByOne = (dir: -1 | 1) => {
     if (!ref.current || !step) return;
-    ref.current.scrollBy({ left: -step, behavior: "smooth" });
+
+    isAutoScrolling.current = true;
+
+    ref.current.scrollBy({
+      left: -dir * step, // <-- FIX: invert direction
+      behavior: "smooth",
+    });
+
+    setTimeout(() => {
+      isAutoScrolling.current = false;
+    }, 350);
   };
 
-  const next = () => {
-    if (!ref.current || !step) return;
-    ref.current.scrollBy({ left: step, behavior: "smooth" });
-  };
+  const prev = () => scrollByOne(-1);
+  const next = () => scrollByOne(1);
 
   // center initial
   useEffect(() => {
@@ -38,13 +47,15 @@ export default function CardScroller({ images }: { images: string[] }) {
     ref.current.scrollLeft = step * images.length;
   }, [step, images.length]);
 
-  // infinite loop correction
   useEffect(() => {
     if (!ref.current || !step) return;
     const node = ref.current;
 
     const onScroll = () => {
+      if (isAutoScrolling.current) return;
+
       const max = node.scrollWidth - node.clientWidth;
+
       if (node.scrollLeft < step) {
         node.scrollLeft += step * images.length;
       } else if (node.scrollLeft > max - step) {
@@ -74,7 +85,7 @@ export default function CardScroller({ images }: { images: string[] }) {
         </button>
 
         {/* SCROLLER */}
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 overflow-hidden max-w-[1150px] mx-auto">
           <div
             ref={ref}
             onMouseDown={(e) => {
@@ -88,15 +99,26 @@ export default function CardScroller({ images }: { images: string[] }) {
               ref.current.scrollLeft =
                 scrollLeft.current - (e.pageX - startX.current) * 1.4;
             }}
-            onMouseUp={() => (isDown.current = false)}
-            onMouseLeave={() => (isDown.current = false)}
-            className="flex gap-12 overflow-x-auto hide-scrollbar cursor-grab select-none pt-6 pb-12"
+            onMouseUp={() => {
+              isDown.current = false;
+              ref.current?.classList.remove("cursor-grabbing");
+            }}
+            onMouseLeave={() => {
+              isDown.current = false;
+              ref.current?.classList.remove("cursor-grabbing");
+            }}
+            className="flex gap-8 overflow-x-auto hide-scrollbar cursor-grab select-none pt-6 pb-12"
           >
             {looped.map((src, i) => (
               <div
                 key={`${src}-${i}`}
                 ref={i === images.length ? cardRef : null}
-                className="flex-shrink-0 lg:h-[72vh] 2xl:h-[78vh] aspect-[2/3] group overflow-hidden rounded-xl"
+                className="
+                  flex-shrink-0
+                  w-[22vw] max-w-[360px] min-w-[260px]
+                  aspect-[2/3]
+                  group overflow-hidden rounded-xl
+                "
                 onMouseEnter={(e) => {
                   const inner = e.currentTarget.querySelector(
                     ".tilt-inner"

@@ -245,7 +245,7 @@ export default function Home() {
                   },
                   {
                     q: "Where do I get cards?",
-                    a: "The game is currently being crowdfunded on Kickstarter. Production with product delivery is planned for July 2026.",
+                    a: "The game is currently being crowdfunded on Kickstarter. Production with product delivery is planned for July 2027.",
                   },
                   {
                     q: "How do I play?",
@@ -332,14 +332,14 @@ export default function Home() {
             <div className="flex justify-start">
               <img
                 src="/images/wordmark-white.png"
-                alt="Quellrite"
+                alt="Ninesprite Studios"
                 className="w-36 md:w-40"
               />
             </div>
 
             {/* Center: Copyright (centered on page) */}
             <p className="text-white/50 text-sm md:text-base text-center">
-              © 2026 Quellrite. All rights reserved.
+              © 2026 Ninesprite Studios LLC. All rights reserved.
             </p>
 
             {/* Right: Social icons */}
