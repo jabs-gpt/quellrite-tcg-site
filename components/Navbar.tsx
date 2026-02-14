@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* DESKTOP MENU - CENTER */}
         <div className="hidden lg:flex items-center gap-10 text-lg xl:text-xl text-white/90 font-medium tracking-wide">
           <a
-            href="https://www.notion.com"
+            href="https://waiting-jupiter-732.notion.site/The-Rite-of-Quelling-307025d0ec0380fbb6a5c649c86180ba"
             target="_blank"
             className="hover:text-[var(--gold)] transition drop-shadow-lg"
           >
@@ -50,7 +50,7 @@ export default function Navbar() {
           <span className="h-5 w-px bg-white/30" />
 
           <a
-            href="https://waiting-jupiter-732.notion.site/Quellrite-Official-Guide-307025d0ec0380499c80f3d4242a76e3"
+            href="https://waiting-jupiter-732.notion.site/Quick-Guide-307025d0ec0380ad9f66cfd2e218c3f8"
             target="_blank"
             className="hover:text-[var(--gold)] transition drop-shadow-lg"
           >
@@ -96,7 +96,7 @@ export default function Navbar() {
         <div className="lg:hidden bg-black/95 border-t border-white/20 shadow-lg">
           <div className="flex flex-col gap-4 px-6 py-6 text-white/90 text-base">
             <a
-              href="https://www.notion.com"
+              href="https://waiting-jupiter-732.notion.site/The-Rite-of-Quelling-307025d0ec0380fbb6a5c649c86180ba"
               target="_blank"
               className="hover:text-[var(--gold)] transition"
               onClick={() => setIsOpen(false)}
@@ -112,7 +112,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href="https://www.notion.com"
+              href="https://waiting-jupiter-732.notion.site/Quick-Guide-307025d0ec0380ad9f66cfd2e218c3f8"
               target="_blank"
               className="hover:text-[var(--gold)] transition"
               onClick={() => setIsOpen(false)}
