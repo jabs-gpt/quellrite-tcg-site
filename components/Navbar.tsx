@@ -50,7 +50,7 @@ export default function Navbar() {
           <span className="h-5 w-px bg-white/30" />
 
           <a
-            href="https://www.notion.com"
+            href="https://waiting-jupiter-732.notion.site/Quellrite-Official-Guide-307025d0ec0380499c80f3d4242a76e3"
             target="_blank"
             className="hover:text-[var(--gold)] transition drop-shadow-lg"
           >
